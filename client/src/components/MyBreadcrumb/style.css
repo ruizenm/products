@@ -1,0 +1,13 @@
+nav.breadcrumb {
+    background-color: #eeeeee;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+ol.breadcrumb {
+    background-color: #eeeeee;
+    font-size: 14px;
+    margin: 16px 0;
+    padding: 0;
+}
