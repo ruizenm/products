@@ -1,6 +1,6 @@
-# React Express Starter Pack
+# Interfaz de productos
 
-> Create full stack apps with React and Express. Run your client and server with a single command. 
+> Busqueda, lista y detalles del producto
 
 ## Quick Start
 
