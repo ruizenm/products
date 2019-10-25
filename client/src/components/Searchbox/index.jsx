@@ -28,6 +28,7 @@ export default class Searchbox extends Component {
                     placeholder="Nunca dejes de buscar"
                     name="query" 
                     onChange={this.handleChange}
+                    value={this.state.query}
                 />
                 <InputGroup.Append>
                     <InputGroup.Text><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
@@ -38,19 +39,9 @@ export default class Searchbox extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({loading : true});
-        fetch('/api/items?q=' + this.state.query)
-        .then(response => {
-            this.setState({loading: false});
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.log("¡Error!");
-            }
-        })
-        .then(data => {
-            this.props.callbackProductList(data);
-        });
+        const query = this.state.query;
+        this.setState({ query: '' });
+        this.props.history.push('/items/search/' + query);
     }
 
 }

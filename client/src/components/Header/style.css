@@ -2,3 +2,7 @@
     background-color: #ffe600;
     padding: 6px 0;
 }
+
+.header-logo {
+    cursor: pointer;
+}

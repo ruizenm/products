@@ -1,51 +1,22 @@
 import React, { Component } from 'react';
+import {  BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import MyBreadcrumb from './components/MyBreadcrumb';
-import ProductDetails from './components/ProductDetails';
 import ProductList from './components/ProductList';
-import { Spinner } from 'react-bootstrap';
+import ProductDetails from './components/ProductDetails';
+
 
 class App extends Component {
 
-  constructor(props) {
-		super(props);
-    this.state = {
-      result: {},
-      view: 'list',
-      productId: ''
-    }
-  }
-
   render() {
     return (<div className="App-body">
-      <Header callbackProductList={this.callbackProductList} />
-      { this.state.result.items && 
-        this.state.result.items.length > 0 &&
-        <div>
-          <MyBreadcrumb />
-          { this.state.view == 'list' ? (
-            <ProductList items={this.state.result.items} callbackProducDetails={this.callbackProducDetails} />
-          ) : (
-            <ProductDetails productId={ this.state.productId }/>
-          )}
-        </div>
-      }
+      <BrowserRouter>
+        <Route path="/" component={Header} />
+        <Route exact path="/items/:id" component={ProductDetails} />
+        <Route path="/items/search/:query" component={ProductList} />
+      </BrowserRouter>
     </div>);
-  }
-
-  callbackProductList = (result) => {
-    this.setState({
-      result: result,
-      view: 'list'
-    });
-  }
-  
-  callbackProducDetails = (id) => {
-    this.setState({
-      view: 'details',
-      productId: id
-    });
   }
 
 }

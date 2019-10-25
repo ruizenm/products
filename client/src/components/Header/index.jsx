@@ -8,14 +8,17 @@ import './style.css';
 export default class Header extends Component {
     
     render() {
+        const { history } = this.props;
         return (<div className="header">
             <Container>
                 <Row>
                     <Col xs={2} sm={1}>
-                        <img src={logo} alt="logo de mercadolibre"/>        
+                        <img    className="header-logo" 
+                                src={logo} alt="logo de mercadolibre" 
+                                onClick={ () => { history.push("/")} }/>        
                     </Col>
                     <Col xs={10} sm={11}>
-                        <Searchbox callbackProductList={this.props.callbackProductList} />
+                        <Searchbox history={history}/>
                     </Col>
                 </Row>
             </Container>

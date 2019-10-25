@@ -18,7 +18,14 @@ app.get('/api/items', (req, res) => {
   request('https://api.mercadolibre.com/sites/MLA/search?q=' + query, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       const results = JSON.parse(body).results;
-      const items = results.map(function(result, index) {
+
+      const compact_result = results.filter(function(value, index) {
+        if (index < 4) {
+          return value;
+        }
+      });
+
+      const items = compact_result.map(function(result, index) {
         return {
           id: result.id,
           title: result.title,
